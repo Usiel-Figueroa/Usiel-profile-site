@@ -1,5 +1,5 @@
 /* Author: Usiel Figueroa
-    Last Updated: 2025-07-27 */
+   Last Updated: 2025-08-01 */
 
 /* Reset & Global Layout */
 * {
@@ -14,12 +14,15 @@ body {
   color: #0a0a0a;
   line-height: 1.6;
   padding: 1rem;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Header */
 header {
   text-align: center;
   margin-bottom: 1rem;
+  max-width: 100%;
 }
 
 /* Navigation Styles */
@@ -29,6 +32,7 @@ nav {
   gap: 1rem;
   margin-bottom: 1rem;
   flex-wrap: wrap;
+  max-width: 100%;
 }
 
 nav a {
@@ -63,13 +67,18 @@ nav a:hover {
   font-size: 1.5rem;
   margin-bottom: 2rem;
   overflow: hidden;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 1rem;
+  font-size: clamp(1rem, 4vw, 2rem);
 }
 
 .left-slide, .right-slide {
   opacity: 0;
   transform: translateX(0);
   animation-fill-mode: forwards;
-  white-space: nowrap;
+  white-space: normal !important;
+  display: inline; /* ensure natural wrapping */
 }
 
 .left-slide {
@@ -156,6 +165,9 @@ main {
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Headings */
@@ -169,6 +181,7 @@ h1 {
     1px 1px 0 #999,
     -1px -1px 0 #fff,
     2px 2px 4px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
 }
 
 h2 {
@@ -184,6 +197,20 @@ h2 {
     2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Paragraphs and Text Blocks */
+.education-item p,
+.project-item p,
+.contact-section p {
+  color: #333;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  text-align: left;  /* Avoid justify to reduce gaps on small screens */
+  white-space: normal !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
 /* Responsive Media Queries */
 @media (max-width: 600px) {
   nav a {
@@ -196,9 +223,17 @@ h2 {
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 2rem);
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .education-item p,
+  .project-item p,
+  .contact-section p {
+    text-align: left; /* Override justify */
   }
 }
 
@@ -250,25 +285,8 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
-
-.education-item h3 {
-  font-size: 1.4rem;
-  color: #444;
-  margin-bottom: 0.25rem;
-  font-weight: 600;
-}
-
-.education-item p {
-  color: #333;
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
-  text-align: justify;
-}
-
-.education-item p em {
-  font-style: italic;
-  color: #666;
+  max-width: 100%;
+  padding: 0 1rem;
 }
 
 /* Projects Section */
@@ -281,32 +299,9 @@ footer {
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
-}
-
-.project-item h3 {
-  font-size: 1.4rem;
-  color: #444;
-  margin-bottom: 0.25rem;
-  font-weight: 600;
-}
-
-.project-item p {
-  color: #333;
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
-  text-align: justify;
-}
-
-.project-item a {
-  color: #0066cc;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.project-item a:hover,
-.project-item a:focus {
-  text-decoration: underline;
-  outline: none;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Contact Section */
@@ -316,15 +311,12 @@ footer {
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.contact-section p {
-  margin-bottom: 1rem;
-  line-height: 1.5;
-  color: #333;
-  text-align: justify;
-}
-
+/* Contact Info Links */
 .contact-info {
   border-top: 1px solid #ccc;
   padding-top: 1rem;
@@ -378,4 +370,3 @@ footer {
   border-radius: 50% / 40%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
